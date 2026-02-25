@@ -2,37 +2,41 @@ public class PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
-        String input = "madam";   // Change to test
+        String input = "A man a plan a canal Panama";
+
         System.out.println("=======================================");
         System.out.println("        PALINDROME CHECKER APP        ");
         System.out.println("=======================================");
-        System.out.println("Input String : " + input);
+        System.out.println("Original Input : " + input);
 
-        boolean result = isPalindrome(input, 0, input.length() - 1);
+        // Step 1: Normalize String
+        String normalized = input
+                .replaceAll("[^a-zA-Z0-9]", "")  // Remove spaces & special characters using regex
+                .toLowerCase();                  // Convert to lowercase
 
-        if (result) {
+        System.out.println("Normalized Input : " + normalized);
+
+        // Step 2: Apply Two-Pointer Logic
+        boolean isPalindrome = true;
+        int start = 0;
+        int end = normalized.length() - 1;
+
+        while (start < end) {
+            if (normalized.charAt(start) != normalized.charAt(end)) {
+                isPalindrome = false;
+                break;
+            }
+            start++;
+            end--;
+        }
+
+        // Print Result
+        if (isPalindrome) {
             System.out.println("Result : The given string is a PALINDROME.");
         } else {
             System.out.println("Result : The given string is NOT a palindrome.");
         }
 
         System.out.println("Program Executed Successfully.");
-    }
-
-    // Recursive method
-    public static boolean isPalindrome(String str, int start, int end) {
-
-        // Base condition
-        if (start >= end) {
-            return true;
-        }
-
-        // If mismatch found
-        if (str.charAt(start) != str.charAt(end)) {
-            return false;
-        }
-
-        // Recursive call
-        return isPalindrome(str, start + 1, end - 1);
     }
 }
