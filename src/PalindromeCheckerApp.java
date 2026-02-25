@@ -1,23 +1,29 @@
 public class PalindromeCheckerApp {
 
-    // Application Version Constant
-    static final String APP_VERSION = "1.0";
-
     public static void main(String[] args) {
 
-        // Display Welcome Banner
+        // Hardcoded String Literal
+        String word = "madam";
+
         System.out.println("=======================================");
         System.out.println("        PALINDROME CHECKER APP        ");
         System.out.println("=======================================");
+        System.out.println("Hardcoded Word : " + word);
 
-        // Display Application Details
-        System.out.println("Version       : " + APP_VERSION);
-        System.out.println("Developed By  : Aditya Kadam");
-        System.out.println("Description   : Validates whether a given string is a palindrome.");
-        System.out.println("---------------------------------------");
+        // Reverse the string manually
+        String reversed = "";
 
-        // Flow Control (Ready for next UC)
-        System.out.println("Application Started Successfully!");
-        System.out.println("Proceeding to next use case...");
+        for (int i = word.length() - 1; i >= 0; i--) {
+            reversed += word.charAt(i);
+        }
+
+        // Conditional Statement (if-else)
+        if (word.equals(reversed)) {
+            System.out.println("Result : The given string is a PALINDROME.");
+        } else {
+            System.out.println("Result : The given string is NOT a palindrome.");
+        }
+
+        System.out.println("Program Executed Successfully.");
     }
 }
